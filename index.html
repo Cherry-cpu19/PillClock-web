@@ -341,6 +341,19 @@
     .privacy-note { display: flex; gap: 7px; margin-top: 14px; color: #829195; font-size: 10px; line-height: 1.55; }
     footer { padding: 0 0 25px; color: #849397; font-size: 11px; text-align: center; }
     .footer-message { margin: 0 0 18px; line-height: 1.6; }
+    .privacy-toggle {
+      margin: 0 0 16px;
+      padding: 4px;
+      color: var(--teal-dark);
+      background: none;
+      border: 0;
+      font: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+    .privacy-toggle:hover { color: var(--teal); }
+    .privacy-toggle:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 3px; }
     .footer-policy {
       width: min(100%, 760px);
       margin: 0 auto 16px;
@@ -661,6 +674,7 @@
     </main>
     <footer>
       <p class="footer-message">Small steps, steady care. Remember to follow your healthcare professional’s instructions.</p>
+      <button type="button" class="privacy-toggle" id="privacyToggle" aria-expanded="false" aria-controls="privacyPolicy">Privacy Policy</button>
       <section class="footer-policy" id="privacyPolicy" aria-labelledby="privacyPolicyTitle" hidden>
         <h2 id="privacyPolicyTitle">About PillClock</h2>
         <p>PillClock helps you organize planned medicine and supplement schedules. It is a planning tool, not a medical service, and it does not replace professional medical advice.</p>
@@ -841,6 +855,8 @@
       const screenshotDialogTitle = document.getElementById("screenshotDialogTitle");
       const screenshotPreview = document.getElementById("screenshotPreview");
       const closeScreenshotButton = document.getElementById("closeScreenshotButton");
+      const privacyToggle = document.getElementById("privacyToggle");
+      const privacyPolicy = document.getElementById("privacyPolicy");
       const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
         "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
       })[char]);
@@ -987,6 +1003,12 @@
 
       helpButton.addEventListener("click", () => prdDialog.showModal());
       closePrdButton.addEventListener("click", () => prdDialog.close());
+      privacyToggle.addEventListener("click", () => {
+        const expanded = privacyToggle.getAttribute("aria-expanded") === "true";
+        privacyToggle.setAttribute("aria-expanded", String(!expanded));
+        privacyToggle.textContent = expanded ? "Privacy Policy" : "Hide Privacy Policy";
+        privacyPolicy.hidden = expanded;
+      });
       const selectHelpTab = (tab) => {
         const technical = tab === technicalTab;
         productTab.setAttribute("aria-selected", String(!technical));
