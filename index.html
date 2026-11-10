@@ -341,6 +341,21 @@
     .privacy-note { display: flex; gap: 7px; margin-top: 14px; color: #829195; font-size: 10px; line-height: 1.55; }
     footer { padding: 0 0 25px; color: #849397; font-size: 11px; text-align: center; }
     .footer-message { margin: 0 0 18px; line-height: 1.6; }
+    .footer-policy {
+      width: min(100%, 760px);
+      margin: 0 auto 16px;
+      padding: 20px;
+      color: #526970;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      text-align: left;
+      line-height: 1.65;
+    }
+    .footer-policy h2 { margin: 0 0 8px; color: #35545b; font-size: 14px; }
+    .footer-policy p { margin: 0 0 12px; }
+    .footer-policy p:last-child { margin-bottom: 0; }
+    .footer-policy a { color: var(--teal-dark); font-weight: 700; }
     .project-credits {
       width: min(100%, 620px);
       margin: 0 auto;
@@ -646,6 +661,14 @@
     </main>
     <footer>
       <p class="footer-message">Small steps, steady care. Remember to follow your healthcare professional’s instructions.</p>
+      <section class="footer-policy" id="privacyPolicy" aria-labelledby="privacyPolicyTitle" hidden>
+        <h2 id="privacyPolicyTitle">About PillClock</h2>
+        <p>PillClock helps you organize planned medicine and supplement schedules. It is a planning tool, not a medical service, and it does not replace professional medical advice.</p>
+        <h2>Privacy Policy — Web Version</h2>
+        <p>Reminders you enter on this webpage are saved in your browser on your device. This webpage does not send those schedule details to a PillClock server, and you do not need an account. Your entries remain in that browser until you remove them or clear its site data.</p>
+        <p>A CSV copy is created and downloaded to your device only when you choose “Download schedule.” The website host may process basic technical information needed to deliver the page under its own privacy practices.</p>
+        <p>This policy describes the web version only. The Android APK may handle data differently; review any privacy notice and permissions provided with the Android app before use. You can get the <a href="./PillClock.apk" download="PillClock.apk">PillClock Android APK</a> from the download button above.</p>
+      </section>
       <section class="project-credits" aria-labelledby="creditsTitle">
         <h2 id="creditsTitle">Project credits</h2>
         <div class="credit-list">
